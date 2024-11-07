@@ -9,18 +9,18 @@ go to .eslint file and change
 }
 ```
 # Special files in next
-**page.js**/
-**layout.js**/
-**not-found.js**/
-**template.js**/
-**loading.js**/
-**error.js**/
-**delault.js**/
+**page.js**\
+**layout.js**\
+**not-found.js**\
+**template.js**\
+**loading.js**\
+**error.js**\
+**delault.js**\
 
 # Routing
 ## Dynamic Routing
-use [anyname] for dynamic routing/
-params to ref route/
+use [anyname] for dynamic routing\
+params to ref route\
 ```
 export default async function Reviews({ params }) {
     const par = await params
@@ -93,9 +93,9 @@ export async function generateMetadata({ params, searchParams }, parent) {
 export default function Page({ params, searchParams }) {}
 ```
 ## Titile Object
-absolute if do not want to change/
-template if editing with nested title/
-default in case no title in nexted routes/
+absolute if do not want to change\
+template if editing with nested title\
+default in case no title in nexted routes\
 ```
 export const metadata = {
   title: {
@@ -141,9 +141,9 @@ router.push('/dashboard',{ scroll: false })
 router.replace('/dashboard')
 ```
 # Templates
-Nameing file templates.js insted of layout.js rerender all components and state in templets usefull when to rerender in specific senarious/
-**template.js**/
-use both layout and template to rerender specific states/
+Nameing file templates.js insted of layout.js rerender all components and state in templets usefull when to rerender in specific senarious\
+**template.js**\
+use both layout and template to rerender specific states\
 
 # Loading
 loading.js wrap whole file in suspence component
@@ -177,8 +177,8 @@ export default function Error({ error, reset }) {
 }
 ```
 # Parllel routing
-@filename
-to access component destructure them from props/
+@filename\
+to access component destructure them from props\
 ```
 export default function Layout({ children, team, analytics }) {
   return (
@@ -190,11 +190,11 @@ export default function Layout({ children, team, analytics }) {
   )
 }
 ```
-**pro**
-as per there conterparts components they benifit from next custom error,loading files where loading and error problems do not stop whole page./
+**pro**\
+as per there conterparts components they benifit from next custom error,loading files where loading and error problems do not stop whole page.\
 
 # Unmached Routes
-use dalfault.js
+use dalfault.js\
 
 # Conditional Routes
 You can use Parallel Routes to conditionally render routes based on certain conditions, such as user role. For example, to render a different dashboard page for the /admin or /user roles:
@@ -207,8 +207,8 @@ export default function Layout({ user, admin }) {
 }
 ```
 # Intercepting Routeing
-use (.)**nameOfFile**
-(.) to match segments on the same level
-(..) to match segments one level above
-(..)(..) to match segments two levels above
-(...) to match segments from the root app directory
+use (.)**nameOfFile**\
+(.) to match segments on the same level\
+(..) to match segments one level above\
+(..)(..) to match segments two levels above\
+(...) to match segments from the root app directory\
