@@ -9,13 +9,13 @@ go to .eslint file and change
 }
 ```
 # Special files in next
-**page.js**
-**layout.js**
-**not-found.js**
-**template.js**
-**loading.js**
-**error.js**
-**delault.js**
+**page.js**/
+**layout.js**/
+**not-found.js**/
+**template.js**/
+**loading.js**/
+**error.js**/
+**delault.js**/
 
 # Routing
 ## Dynamic Routing
