@@ -16,6 +16,8 @@ go to .eslint file and change
 **loading.js**\
 **error.js**\
 **delault.js**\
+**route.js**\
+**middleware.js**
 
 # Routing
 ## Dynamic Routing
@@ -212,3 +214,139 @@ use (.)**nameOfFile**\
 (..) to match segments one level above\
 (..)(..) to match segments two levels above\
 (...) to match segments from the root app directory\
+
+# Server side next 
+use file name **route.js**
+
+## GET
+```
+export async function GET(params) {
+    return new Response("hello world")
+}
+```
+## POST
+```
+export async function POST(request) {
+    const body = await request.json()
+    const { username, password } = body
+    const user = { username: username, password: password }
+    users.push(user)
+    console.log(users)
+    return new Response(JSON.stringify(user), {
+        headers: {
+            "Content-Type": "application/json"
+        },
+        status: 201,
+    })
+}
+```
+## Dynamic Route handle
+use [**filename**] 
+```
+//filename [id]
+export async function GET(request, { params }) {
+    const {id} = await params
+    console.log(id)
+    return new Response(id.id)
+}
+```
+
+## URL query
+```
+export async function GET(request) {
+    const searchParams = request.nextUrl.searchParams
+    const query = searchParams.get("query")
+    const name = searchParams.get("name")
+    console.log(query, name)
+    return new Response("hello world")
+}
+```
+## Redirect
+```
+import { redirect } from "next/navigation"
+redirect("/api")
+```
+
+## Headers
+### Way1
+```
+export async function GET(request) {
+    const reqHeader = new Headers(request.headers)
+    const auth = reqHeader.get("Authorization")
+    console.log(auth)
+    return new Response("hello world")
+}
+```
+### Way2
+```
+ import { headers } from "next/headers"
+ export async function GET(request) {
+  const headerList = await headers()
+  const authHeader = headerList.get("Authorization")
+  console.log(authHeader)
+  return new Response("hello world")
+}
+```
+## Set Cookies
+### 1
+```
+export async function GET(request) {
+    return new Response("<h1>hello world</h1>", {
+        headers: {
+            "content-Type": "text/html",
+            "Set-Cookie": "id=98"
+        }
+    })
+}
+```
+### 2
+```
+import { cookies } from "next/headers"
+
+export async function GET(request) {
+  cookies.set("name","value")
+    return new Response("<h1>hello world</h1>", {
+        headers: {
+            "content-Type": "text/html",
+        }
+    })
+}
+```
+
+
+## Get Cookies
+### 1
+```
+export async function GET(request) {
+    const id = request.cookies.get("id")
+    console.log(id)
+    return new Response("<h1>hello world</h1>")
+}
+```
+### 2
+```
+import { cookies } from "next/headers"
+
+export async function GET(request) {
+const id cookies.get("name","value")
+console.log(id)
+return new Response("<h1>hello world</h1>")
+}
+```
+
+## Catching 
+use code below for next to stop catching
+```
+export const dynamic = "force-dynamic"
+```
+## MiddleWare in next
+use **middleware.js** file in src folder
+NextResponse is very useful in middle for more go to :https://nextjs.org/docs/app/api-reference/functions/next-response
+```
+import { NextResponse } from 'next/server'
+export function middleware(){
+const responce = NextResponse.next()
+ //code  here
+return responce
+} 
+```
