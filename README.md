@@ -350,3 +350,77 @@ const responce = NextResponse.next()
 return responce
 } 
 ```
+# Rendering
+
+## CLIENT-SIDE-RENDERING
+! On request a html and js reference is sent in response/
+! js is reqested from previous refrence/
+! html is generated from response js and intractive ui is created
+
+### Draw back
+
+***SEO***/
+A single div in a html is not optimal for seo,as it provide little content for crawler to index
+
+***Performance***/
+Having browser handle all work of fetching data,computing UI and making html interative slows thing down as js file size increase due to new added feachers it makes case worst.
+
+## SERVER-SIDE SOLUTION
+! on request a html is genetaed on server and sent with js reference in response
+! browser display non-intractive html and req js reference 
+! js reference is sent in response which is then hydrated by react 
+
+### SERVER-SIDE SOLUTION TYPES
+
+***STATIC SITE GENRATION (SSG)***/
+SSG happens when application is build and deploy on server as pages are already render and ready to serve its ideal for site with blog as content do not change much.
+
+***SERVER-SIDE RENDERING (SSR)***/
+SSR render pages on-demand and good for site like social meadia
+
+### Drawbacks
+***All or nothing waterfall***
+1) Components can't stop rendering while loading data /
+if component need to fetch data from extarnal source server must load data before rendering./
+This delay server respose to browser/
+2) for react to hydrate components in browser must match component tree in server which means all js must be loaded before react can start hydrating any component./
+3) All component must be hydrated before you can interact with any component
+
+## SUSPENCE FOR SSR 
+1) HTML streaming on server /
+By wraping a content in ***suspence*** it tell react to start streaming rest of html /
+Code splitting using ***React.lazy*** allow you to mark a specific code not for immediately loading and signal budler to segregrate in differnt script tag./
+2) Selective hydration on client/
+Using ***suspence*** prevent rest of code from not hydrating /
+Selective hydration allow user to intract with rest of components in page/
+Selective hydration priotize based on user interation/
+
+### Drawbacks
+1) Should user need to download so much data?
+2) Should all component be hydrated even those that do not need interactivity?
+3) Should so much of work be done on user's device? 
+
+## Server Side components
+1) server side componets do not send code to client allow large dependency to stay on server.
+2) It removes hydration step,speeding up app loading and interation.
+3) It directly fetch data and render it to component.
+4) It increase security by keeping sensitive logic and data on server.
+5) It allows server to catch result for later request from same or differnt user.
+6) Improve SEO
+
+## Server-only Code
+```
+npm i server-only
+```
+```
+import "server-only"
+```
+## Client-only Code
+```
+npm i client-only
+```
+```
+import "client-only"
+```
+
+

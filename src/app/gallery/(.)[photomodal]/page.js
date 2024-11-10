@@ -1,4 +1,3 @@
-'use client'
 import Modal from "@/components/Modal.js"
 import GalleryCard from '@/components/GalleryCard';
 import { api } from '@/components/Photoapi';

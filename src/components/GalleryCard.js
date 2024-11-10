@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 export default function GalleryCard({ api }) {
     const router = useRouter()
     const handlePhotoClicked = (index) => {
-        router.push(`/gallery/${index}`)
+        router.push(`/gallery/${index}`, { scroll: false })
     }
     return (
         <div>

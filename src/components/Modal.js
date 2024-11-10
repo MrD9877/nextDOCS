@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 export default function Modal(index) {
     const router = useRouter()
     const [photo, setPhoto] = useState()
+    const [loading, setLoading] = useState(true)
     const [src, setSrc] = useState()
     const fechPhoto = () => {
         const photo = parseInt(index.index)
@@ -15,18 +16,30 @@ export default function Modal(index) {
             setSrc(image.src.original)
             return image
         })
+        setLoading(false)
     }
     useEffect(() => {
+        setLoading(true)
         fechPhoto()
     }, [])
     const closeModal = () => {
         router.push("/gallery", { scroll: false })
     }
+
+    const handleOutsideModelclick = (e) => {
+        const target = e.target.classList
+        let clickedOutside = false
+        for (let i = 0; i < target.length; i++) {
+            const givenclassName = target[i]
+            if (givenclassName === "outside") clickedOutside = true
+        }
+        if (clickedOutside) closeModal()
+    }
     return (
-        <div className="w-screen h-screen flex justify-center align-middle">
+        <div onClick={handleOutsideModelclick} className="w-screen h-screen flex justify-center align-middle">
             {/* <!-- Main modal --> */}
-            <div id="default-modal" tabIndex="-1" aria-hidden="true" style={{ left: "30%" }} className="overflow-y-auto overflow-x-hidden fixed z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div className="relative p-4 w-full max-w-2xl max-h-full">
+            <div id="default-modal" tabIndex="-1" aria-hidden="true" className="outside overflow-y-auto overflow-x-hidden fixed z-50 justify-center items-center md:inset-0 h-[calc(100%-1rem)]">
+                <div className="relative m-auto p-4 w-full max-w-2xl max-h-full">
                     {/* <!-- Modal content --> */}
                     <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
                         {/* <!-- Modal header --> */}
@@ -40,7 +53,7 @@ export default function Modal(index) {
                         </div>
                         {/* <!-- Modal body --> */}
                         <div className="p-4 md:p-5 space-y-4 w-full flex justify-center">
-                            {src ? <Image src={src} height={400} width={400} alt='img' /> : "loading.."}
+                            {loading ? <p>Loading...</p> : src ? <Image src={src} height={400} width={400} alt='img' /> : "loading.."}
                         </div>
                     </div>
                 </div>

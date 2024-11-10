@@ -15,6 +15,7 @@ export default function Navbar() {
                 <Link className={`link ${pathname === '/contact' ? 'active' : ''}`} href="/contact">Contact</Link>
                 <Link className={`link ${pathname === '/about' ? 'active' : ''}`} href="/about">About</Link>
                 <Link className={`link ${pathname === '/' ? 'active' : ''}`} href="/">Home</Link>
+                <Link className={`link ${pathname === '/gallery' ? 'active' : ''}`} href="/gallery">gallery</Link>
             </div>
         </>
     )

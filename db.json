@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "title": "Wireless Headphones",
+        "price": 59.99,
+        "description": "Noise-canceling wireless headphones with 20 hours of battery life and high-fidelity sound."
+    },
+    {
+        "id": 2,
+        "title": "Smartphone Stand",
+        "price": 14.99,
+        "description": "Adjustable aluminum stand for smartphones and tablets, compatible with devices up to 12 inches."
+    },
+    {
+        "id": 3,
+        "title": "Bluetooth Speaker",
+        "price": 34.99,
+        "description": "Portable Bluetooth speaker with a waterproof design, up to 10 hours of playtime, and enhanced bass."
+    },
+    {
+        "id": 4,
+        "title": "Fitness Tracker",
+        "price": 49.99,
+        "description": "Lightweight fitness tracker with heart rate monitor, sleep tracking, and step counter."
+    },
+    {
+        "id": 5,
+        "title": "LED Desk Lamp",
+        "price": 24.99,
+        "description": "Dimmable LED desk lamp with adjustable brightness and color temperature, ideal for reading and studying."
+    }
+]
